@@ -57,6 +57,8 @@ update: (output, domEl) ->
   html += "    <span class=" + text_color_class + ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Health: " + data.condition + ", " + data.cycles +  " cycles</span>" 
   html += "</td></tr>"
 
+
+  # If your keyboard doesn't report its battery status to OSX, delete everything until the 'end keyboard status' comment to remove it from your UI
   percent_keyboard_battery_capacity = data.keyboard_remaining_percent
 
   if data.keyboard_connected == 'Yes'
@@ -70,6 +72,10 @@ update: (output, domEl) ->
   html += "    <span class=" + text_color_class + ">AUX-K: " + keyboard_status + "</span>" 
   html += "</td></tr>"
 
+  # end keyboard status
+
+  # If your mouse doesn't report its battery status to OSX, delete everything until the 'end mouse status' comment to remove it from your UI
+
   percent_mouse_battery_capacity = data.mouse_remaining_percent
 
   if data.mouse_connected == 'Yes'
@@ -82,6 +88,8 @@ update: (output, domEl) ->
   html += "<tr><td>"
   html += "    <span class=" + text_color_class + ">AUX-M: " + mouse_status + "</span>" 
   html += "</td></tr>"
+
+  # end mouse status
 
   $(batteryInfo).html(html)
 
