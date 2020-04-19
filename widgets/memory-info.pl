@@ -5,7 +5,7 @@ use warnings;
 
 use JSON::XS;
 
-# config
+# config: Edit the below variable with the output of `system_profiler SPHardwareDataType | grep "  Memory:" | awk '{print $2}'`
 my $system_memory_in_gb = 16;
 
 $_ = `ps -cmeo "command=, rss="`;
