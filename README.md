@@ -23,6 +23,6 @@ My personal library of [Übersicht](http://tracesof.net/uebersicht/) widgets, wh
   ## Dev Setup
   - Install [Übersicht](http://tracesof.net/uebersicht/).
   - Checkout this repo.
-  - Delete the widgets directory that comes with Übersicht: `rm -rf ~/Library/ApplicationSupport/Übersicht/widgets/`
+  - Delete the widgets directory that comes with Übersicht: `rm -rf ~/Library/Application\ Support/Übersicht/widgets/`
   - Symlink the widgets directory in Übersicht with the widgets directory in your repo checkout: `ln -s ~/Code/uebersicht-widgets/widgets ~/Library/Application\ Support/Übersicht/widgets`
     - This command assumes you checked this repo out to `~/Code/`
