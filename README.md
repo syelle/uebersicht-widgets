@@ -18,3 +18,4 @@ My personal library of [Übersicht](http://tracesof.net/uebersicht/) widgets, wh
   - _network-info.pl_ - Edit `$ethernetService` with the name of your preferred ethernet adapter as it appears in the output of `networksetup -listallnetworkservices`
   - _battery-info.pl_ - Edit `$keyboard_name` and `$mouse_name` with the names of your keyboard and mouse as they appear in the output of `system_profiler SPBluetoothDataType 2>&1`
     - Note: Only certain bluetooth devices report their battery status to OSX. This script has only been tested with Apple's Magic Keyboard and Magic Mouse
+  - _disk-info.pl_ - Edit `$disk_name` with the name of your preferred disk as it appears in the output of `df -l`
