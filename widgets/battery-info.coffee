@@ -1,4 +1,4 @@
-command: "./battery.pl"
+command: "./battery-info.pl"
 
 refreshFrequency: 10000
 
