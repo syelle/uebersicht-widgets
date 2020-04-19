@@ -20,9 +20,9 @@ My personal library of [Übersicht](http://tracesof.net/uebersicht/) widgets, wh
     - Note: Only certain bluetooth devices report their battery status to OSX. This script has only been tested with Apple's Magic Keyboard and Magic Mouse
   - _disk-info.pl_ - Edit `$disk_name` with the name of your preferred disk as it appears in the output of `df -l`
 
-  ## Dev Setup
-  - Install [Übersicht](http://tracesof.net/uebersicht/).
-  - Checkout this repo.
-  - Delete the widgets directory that comes with Übersicht: `rm -rf ~/Library/Application\ Support/Übersicht/widgets/`
-  - Symlink the widgets directory in Übersicht with the widgets directory in your repo checkout: `ln -s ~/Code/uebersicht-widgets/widgets ~/Library/Application\ Support/Übersicht/widgets`
-    - This command assumes you checked this repo out to `~/Code/`
+## Dev Setup
+- Install [Übersicht](http://tracesof.net/uebersicht/).
+- Checkout this repo.
+- Delete the widgets directory that comes with Übersicht: `rm -rf ~/Library/Application\ Support/Übersicht/widgets/`
+- Symlink the widgets directory in Übersicht with the widgets directory in your repo checkout: `ln -s ~/Code/uebersicht-widgets/widgets ~/Library/Application\ Support/Übersicht/widgets`
+  - This command assumes you checked this repo out to `~/Code/`
