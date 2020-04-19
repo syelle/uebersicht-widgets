@@ -5,6 +5,11 @@ use warnings;
 
 use JSON::XS;
 
+# config: Update these variables with the names of your keyboard and mouse as they appear in the output of `system_profiler SPBluetoothDataType 2>&1`
+# Note: Only certain bluetooth devices report their battery status to OSX. This script has only been tested with Apple's Magic Keyboard and Magic Mouse
+my $keyboard_name = "Shaun Yelle’s Keyboard";
+my $mouse_name = "Shaun Yelle’s Mouse";
+
 $_ = `system_profiler SPPowerDataType 2>&1`;
 
 my ($remaining, $capacity, $charging, $cycles, $condition, $amps, $volts, $connected) = (0, 0, 'No', 0, 'Unknown', 0, 0, 'No');
@@ -56,12 +61,16 @@ $_ = `system_profiler SPBluetoothDataType 2>&1`;
 
 my ($keyboard_connected, $keyboard_remaining_percent, $mouse_connected, $mouse_remaining_percent) = ('No', 0, 'No', 0);
 
-if(/(?:Shaun Yelle’s Keyboard:).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)/) {
+my $device_name_regex = '(?:' . $keyboard_name . ':).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)';
+
+if(/$device_name_regex/) {
   $keyboard_remaining_percent = $1;
   $keyboard_connected = 'Yes';
 }
 
-if(/(?:Shaun Yelle’s Mouse:).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)/) {
+$device_name_regex = '(?:' . $mouse_name . ':).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)';
+
+if(/$device_name_regex/) {
   $mouse_remaining_percent = $1;
   $mouse_connected = 'Yes';  
 }

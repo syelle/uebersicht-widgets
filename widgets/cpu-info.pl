@@ -5,7 +5,7 @@ use warnings;
 
 use JSON::XS;
 
-# config
+# config: Edit the below variable with the output of `sysctl -n hw.ncpu`
 my $number_of_logical_cpus = 12;
 
 my ($total_cpu_load) = (0.0);
