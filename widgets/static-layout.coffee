@@ -13,6 +13,7 @@ render: -> """
 		<div id='resc-main' class='metric-title title-row'>RESC-MAIN</div>
 		<div id='comm-array' class='metric-title title-row'>COMMS ARRAY</div>
 		<div id='reactor' class='metric-title title-row'>REACTOR</div>
+		<div id='storage' class='metric-title title-row'>STORAGE</div>
 		<div class='top-title-end-filler title-row'></div>
  	</div>
 """
@@ -74,7 +75,7 @@ style: """
   .top-title-end-filler
     background-color #666666
     height 35px
-    width 742px
+    width 529px
     border-bottom-right-radius 35px
     border-top-right-radius 35px
 
@@ -101,6 +102,9 @@ style: """
   	width 200px
 
   #reactor
+  	width 200px
+
+  #storage
   	width 200px
 
 """
