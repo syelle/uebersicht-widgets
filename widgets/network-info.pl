@@ -10,15 +10,11 @@ my $macRegex = qr"[a-fA-F0-9:]{17}|[a-fA-F0-9]{12}$";
 
 my ($ethernetService, $ethernetIP, $ethernetMAC, $wifiIP, $wifiMAC) = ("Ethernet", "Disconnected", "", "Disconnected", "");
 
-$_ = `networksetup -listallnetworkservices`;
-
-if(/USB\s+10\/100\/1000\s+LAN/) {
-	$ethernetService = "USB 10/100/1000 LAN";	
-}elsif(/Display\s+Ethernet/) {
-	$ethernetService = "Display Ethernet";	
-}elsif(/Thunderbolt\s+Ethernet/) {
-	$ethernetService = "Thunderbolt Ethernet";	
-}
+# config: Run `networksetup -listallnetworkservices` to find the name of your Ethernet network adapter
+# $ethernetService = "Ethernet";
+# $ethernetService = "Display Ethernet";
+# $ethernetService = "Thunderbolt Ethernet";
+$ethernetService = "USB 10/100/1000 LAN";
 
 $_ = `networksetup -getinfo "$ethernetService"`;
 
