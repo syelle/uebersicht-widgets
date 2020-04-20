@@ -22,7 +22,7 @@ My personal library of [Übersicht](http://tracesof.net/uebersicht/) widgets, wh
 
 ## Dependencies
 - [Übersicht](http://tracesof.net/uebersicht/), which renders the UI and continuously runs scripts to fetch updates
-- [Okuda](http://www.pixelsagas.com/?download=okuda), a free-for-personal-use font similar to the font used in the LCARS interface.
+- [Okuda](http://www.pixelsagas.com/?download=okuda), a free-for-personal-use font similar to the font used in the LCARS Interface in Star Trek.
 
 ## Dev Setup
 - Install [Übersicht](http://tracesof.net/uebersicht/).
