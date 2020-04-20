@@ -6,6 +6,7 @@ My personal library of [Übersicht](http://tracesof.net/uebersicht/) widgets, wh
 
 ## How To Use
 - Install [Übersicht](http://tracesof.net/uebersicht/).
+- Download and install the [Okuda](http://www.pixelsagas.com/?download=okuda) font.
 - Open a terminal window
 - Run the following commands:
   - Change to the directory where Übersicht widgets are stored: `cd ~/Library/ApplicationSupport/Übersicht/widgets/`
