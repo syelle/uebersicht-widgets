@@ -20,6 +20,10 @@ My personal library of [Übersicht](http://tracesof.net/uebersicht/) widgets, wh
     - Note: Only certain bluetooth devices report their battery status to OSX. This script has only been tested with Apple's Magic Keyboard and Magic Mouse
   - _disk-info.pl_ - Edit `$disk_name` with the name of your preferred disk as it appears in the output of `df -l`
 
+## Dependencies
+- [Übersicht](http://tracesof.net/uebersicht/), which renders the UI and continuously runs scripts to fetch updates
+- [Okuda](http://www.pixelsagas.com/?download=okuda), a free-for-personal-use font similar to the font used in the LCARS interface.
+
 ## Dev Setup
 - Install [Übersicht](http://tracesof.net/uebersicht/).
 - Checkout this repo.
