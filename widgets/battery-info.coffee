@@ -94,7 +94,7 @@ update: (output, domEl) ->
   $(batteryInfo).html(html)
 
 style: """
-  left: 840px
+  left: 850px
   top: 0px
   width: 200px
 """
