@@ -55,5 +55,5 @@ style: """
   border none
   left 390px
   top 0px
-  width 330px
+  width 300px
 """
