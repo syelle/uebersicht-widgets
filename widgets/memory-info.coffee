@@ -26,9 +26,9 @@ update: (output, domEl) ->
   else if parseFloat(percent_memory_capacity) < 10 
     text_color_class = "negligible"
 
-  html += "<tr><td><span class=" + text_color_class + ">Total Memory Used</span></td>"
-  html += "<td><span class=" + text_color_class + ">&nbsp;- " + data.total_memory_used + "</span></td>"
-  html += "<td><span class=" + text_color_class + ">" + percent_memory_capacity + "%</td></span></tr>" 
+  html += "<tr><td width='110px'><span class=" + text_color_class + ">Total Memory Used</span></td>"
+  html += "<td width='85px'><span class=" + text_color_class + ">&nbsp;- " + data.total_memory_used + "</span></td>"
+  html += "<td width='50px'><span class=" + text_color_class + ">" + percent_memory_capacity + "%</td></span></tr>" 
 
   for process in data.processes
     process_memory_capacity_use = process.percent_memory_used
