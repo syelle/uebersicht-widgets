@@ -28,9 +28,9 @@ update: (output, domEl) ->
   else if parseFloat(percent_cpu_capacity) < 1 
     text_color_class = "negligible"
 
-  html += "<tr><td width='100px'><span class=" + text_color_class + ">Total Load</span></td>"
-  html += "<td width='50px'><span class=" + text_color_class + ">&nbsp;- " + data.total_cpu_load + "</span></td>"
-  html += "<td width='50px'><span class=" + text_color_class + ">" + percent_cpu_capacity + "%</span></td></tr>" 
+  html += "<tr><td><span class=" + text_color_class + ">Total Load</span></td>"
+  html += "<td><span class=" + text_color_class + ">&nbsp;- " + data.total_cpu_load + "</span></td>"
+  html += "<td><span class=" + text_color_class + ">" + percent_cpu_capacity + "%</span></td></tr>" 
 
   for process in data.processes
     process_cpu_capacity_use = process.percent_of_total_cpu_capacity
@@ -58,8 +58,4 @@ update: (output, domEl) ->
 style: """
   left 190px
   top 0px
-  width 200px
-
-  border none
-  box-sizing border-box
 """

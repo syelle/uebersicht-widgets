@@ -31,12 +31,12 @@ style: """
   font-size 20px
 
   #top-section
-    height 270px
+    height 300px
 
   #system-status
-    width 130px
-    height 200px
-    padding 5px
+    width 124px
+    height 225px
+    padding 8px
     color #000
     background-color #5a92b7
 
@@ -51,13 +51,13 @@ style: """
 
   .title-row
     float left
-    height 25px
+    height 28px
     margin-right 5px
 
   .top-title-filler
     width 178px
     background-color #666666
-    height 35px
+    height 38px
     border-bottom-left-radius 35px
 
   .top-title-filler::before
@@ -74,8 +74,8 @@ style: """
 
   .top-title-end-filler
     background-color #666666
-    height 35px
-    width 529px
+    height 38px
+    width 495px
     border-bottom-right-radius 35px
     border-top-right-radius 35px
 
@@ -91,12 +91,12 @@ style: """
     box-shadow: 0 -25px 0 0 #666666;
 
   .metric-title
-    padding 5px
+    padding 5px 8px
     color #000
     background-color #b99609
 
   #resc-main
-    width 420px
+    width 430px
 
   #comm-array
   	width 200px

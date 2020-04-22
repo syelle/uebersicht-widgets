@@ -34,7 +34,7 @@ update: (output, domEl) ->
   $(diskInfo).html(html)
 
 style: """
-  left: 1060px
+  left: 1070px
   top: 0px
   width: 200px
 """
