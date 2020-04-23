@@ -53,7 +53,7 @@ update: (output, domEl) ->
 
 style: """
   border none
-  left 390px
+  left 410px
   top 0px
   width 300px
 """
