@@ -28,7 +28,7 @@ update: (output, domEl) ->
   else if parseFloat(percent_cpu_capacity) < 1 
     text_color_class = "negligible"
 
-  html += "<tr><td width='100px'><span class=" + text_color_class + ">Total Load</span></td>"
+  html += "<tr><td width='120px'><span class=" + text_color_class + ">Total Load</span></td>"
   html += "<td width='50px'><span class=" + text_color_class + ">&nbsp;- " + data.total_cpu_load + "</span></td>"
   html += "<td width='50px'><span class=" + text_color_class + ">" + percent_cpu_capacity + "%</span></td></tr>" 
 

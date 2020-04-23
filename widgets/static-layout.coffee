@@ -96,7 +96,7 @@ style: """
     background-color #b99609
 
   #resc-main
-    width 430px
+    width 460px
 
   #comm-array
   	width 200px
