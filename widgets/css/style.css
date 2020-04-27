@@ -34,3 +34,7 @@ table, th, tr, td {
     padding: 0;
 }	
 
+th {
+	color: #e3c94e;
+	font-weight: normal;
+}

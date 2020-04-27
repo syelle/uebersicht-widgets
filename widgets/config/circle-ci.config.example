@@ -1,0 +1,20 @@
+circleci_api_token => 'api_key',
+vcs_service => 'github',
+org_name => 'my_org',
+workflows_to_fetch => [
+	{
+		repo_name => 'repo1',
+		workflow_name => 'workflow1',
+		branch_name => 'master',
+	},
+	{
+		repo_name => 'repo1',
+		workflow_name => 'workflow1',
+		branch_name => 'staging',
+	},
+	{
+		repo_name => 'repo2',
+		workflow_name => 'workflow2',
+		branch_name => 'master',
+	},
+],
