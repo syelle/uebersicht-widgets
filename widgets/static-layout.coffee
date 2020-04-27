@@ -4,18 +4,27 @@ refreshFrequency: false
 
 render: -> """
 
-    <div id="top-section">
-		<div id='system-status'>SYSTEM STATUS</div>
+  <div id='system-status-section'>
+		<div id='system-status-title' class='bottom-spacer'>SYSTEM STATUS</div>
 		<div class='sidebar-filler'></div>
-    </div>
-	<div id="top-section-metrics-titles">
-		<div class='top-title-filler title-row'> </div>
+  </div>
+	<div class='metrics-titles-section bottom-spacer'>
+		<div class='system-status-title-filler title-row'></div>
 		<div id='resc-main' class='metric-title title-row'>RESC-MAIN</div>
 		<div id='comm-array' class='metric-title title-row'>COMMS ARRAY</div>
 		<div id='reactor' class='metric-title title-row'>REACTOR</div>
 		<div id='storage' class='metric-title title-row'>STORAGE</div>
-		<div class='top-title-end-filler title-row'></div>
+		<div class='system-status-titles-end-filler title-row'></div>
  	</div>
+  <div class='metrics-titles-section'>
+    <div class='ops-metrics-title-filler title-row'></div>
+    <div id='missions' class='metric-title title-row'>MISSIONS</div>
+    <div class='ops-status-titles-end-filler title-row'></div>
+  </div>
+  <div id='ops-status-section'>
+    <div class='sidebar-filler bottom-spacer'></div>
+    <div id='ops-status-title'>OPERATIONS STATUS</div>
+  </div>
 """
 
 style: """
@@ -30,39 +39,42 @@ style: """
   font-family Okuda
   font-size 20px
 
-  #top-section
+  #system-status-section
     height 300px
 
-  #system-status
+  #system-status-title
     width 124px
-    height 225px
+    height 244px
     padding 8px
     color #000
     background-color #5a92b7
 
   .sidebar-filler
     background-color #666666
-    margin-top 7px
-    height 60px
+    height 34px
     width 140px
 
-  #top-section-metrics-titles
-    height 100px
+  .metrics-titles-section
+    height 38px
+
+  .bottom-spacer
+    margin-bottom 6px
 
   .title-row
     float left
     height 28px
     margin-right 5px
 
-  .top-title-filler
+  .system-status-title-filler
     width 178px
     background-color #666666
     height 38px
     border-bottom-left-radius 35px
 
-  .top-title-filler::before
+  .system-status-title-filler::before
     content: "";
-    position: absolute;
+    position: relative;
+    display: block;
 
     background-color: transparent;
     left: 140px
@@ -72,23 +84,12 @@ style: """
     border-bottom-left-radius: 50px;
     box-shadow: 0 35px 0 0 #666666;
 
-  .top-title-end-filler
+  .system-status-titles-end-filler
     background-color #666666
     height 38px
-    width 495px
+    width 465px
     border-bottom-right-radius 35px
     border-top-right-radius 35px
-
-  .bottom-title-filler::before
-    content: "";
-    position: absolute;
-
-    background-color: transparent;
-    bottom: -50px;
-    height: 50px;
-    width: 25px;
-    border-top-left-radius: 25px;
-    box-shadow: 0 -25px 0 0 #666666;
 
   .metric-title
     padding 5px 8px
@@ -106,5 +107,44 @@ style: """
 
   #storage
   	width 200px
+
+  .ops-metrics-title-filler
+    width 178px
+    background-color #666666
+    height 38px
+    border-top-left-radius 35px
+
+  .ops-metrics-title-filler::before
+    content: "";
+    position: relative;
+    display: block;
+
+    background-color: transparent;
+    left: 140px;
+    top: 38px;
+    height: 100px;
+    width: 38px;
+    border-top-left-radius: 50px;
+    box-shadow: 0 -35px 0 0 #666666;
+
+  .ops-status-titles-end-filler
+    background-color #666666
+    height 38px
+    width 1208px
+    border-bottom-right-radius 35px
+    border-top-right-radius 35px
+
+  #ops-status-section
+    height 300px
+
+  #ops-status-title
+    width 124px
+    height 640px
+    padding 8px
+    color #000
+    background-color #5a92b7
+
+  #missions
+    width 380px
 
 """
