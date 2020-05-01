@@ -24,6 +24,99 @@
 	color: #808080;
 }
 
+.battery-gauge {
+    float: left;
+    margin: 5px;	
+}
+
+.battery-bar-container {
+    width: 56px;
+    height: 150px;
+
+    border-color: #666666;
+    border-style: solid;
+    border-width: 1px;
+
+    transform: rotate(180deg);
+}
+
+.battery-progress-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #cf9f01;
+}
+
+.battery-title, .battery-percent-display {
+	text-align: center;
+}
+
+.battery-idle {
+	animation: idleBattery 4s ease;
+	animation-iteration-count: infinite;	
+}
+
+.battery-charging {
+/*	background: #664405;*/
+	background-image: linear-gradient(to bottom, #cf9f01 0%, #ffff9f 50%, #cf9f01 100%);
+	background-repeat: no-repeat;
+	background-size: 56px 150px;
+	display: inline-block;
+	position: relative; 
+
+	-webkit-animation-duration: 2s;
+	-webkit-animation-fill-mode: forwards; 
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: charging;
+	-webkit-animation-timing-function: linear;
+ }
+
+.battery-discharging{
+/*	background: #664405;*/
+	background-image: linear-gradient(to bottom, #cf9f01 0%, #ffff9f 50%, #cf9f01 100%);
+	background-repeat: no-repeat;
+	background-size: 56px 150px; 
+	display: inline-block;
+	position: relative; 
+
+	-webkit-animation-duration: 2s;
+	-webkit-animation-fill-mode: forwards; 
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: discharging;
+	-webkit-animation-timing-function: linear;
+}
+
+@keyframes idleBattery {
+  0% {
+    background-color: #664405;
+  }
+  50% {
+    background-color: #cf9f01;
+  }
+  100% {
+    background-color: #664405;
+  }
+}
+
+@keyframes charging {
+  0% {
+    background-position: 0 -150px;
+  }
+  
+  100% {
+    background-position: 0 150px; 
+  }
+}
+
+@keyframes discharging {
+  0% {
+    background-position: 0 150px;
+  }
+  
+  100% {
+    background-position: 0 -150px; 
+  }
+}
+
 table {
     table-layout: fixed;
 }
