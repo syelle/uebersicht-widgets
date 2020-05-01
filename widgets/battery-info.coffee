@@ -1,16 +1,56 @@
 command: "./battery-info.pl"
 
-refreshFrequency: 10000
+refreshFrequency: 5000
 
 render: -> """
   <link rel='stylesheet' href='./css/style.css'>
   <table id='batteryInfo'></table>
+  <div>
+    <div class='battery-gauge'>
+      <div class='battery-title'>MAIN</div>
+      <div class='battery-bar-container'>
+        <div id='main-battery-bar' class='battery-progress-bar'></div>
+      </div>
+      <div id='main-battery-percent-display' class='battery-percent-display'></div>
+    </div>
+    <div class='battery-gauge'>
+      <div class='battery-title'>AUX-K</div>
+      <div class='battery-bar-container'>
+        <div id='keyboard-battery-bar' class='battery-progress-bar battery-discharging'></div>
+      </div>
+      <div id='keyboard-battery-percent-display' class='battery-percent-display'></div>
+    </div>
+    <div class='battery-gauge'>
+      <div class='battery-title'>AUX-M</div>
+      <div class='battery-bar-container'>
+        <div id='mouse-battery-bar' class='battery-progress-bar battery-discharging'></div>
+      </div>
+      <div id='mouse-battery-percent-display' class='battery-percent-display'></div>
+    </div>
+  <div>
 """
 
 update: (output, domEl) -> 
   data = JSON.parse output
 
   html = ""
+
+  text_color_class = "nominal"
+
+  # Condition: https://support.apple.com/en-us/HT204054
+  # Cycles:https://support.apple.com/en-my/HT201585
+
+  battery_condition = data.condition
+
+  if battery_condition == "Replace Soon"
+    text_color_class = "elevated"
+  else if battery_condition == "Replace Now"
+    text_color_class = "issue"
+  else if battery_condition == "Service Battery" 
+    text_color_class = "critical"
+
+  html += "<tr><td><span class=" + text_color_class + ">Core Health: " + data.condition + "</span></td></tr>" 
+  html += "<tr><td><span class=" + text_color_class + ">Age: " + data.cycles +  " cycles</span></td></tr>" 
 
   get_text_color_class_for_status = (battery_status) ->
     if parseFloat(battery_status) <= 20 
@@ -23,40 +63,16 @@ update: (output, domEl) ->
   percent_battery_capacity = data.remainingPercent
   text_color_class = get_text_color_class_for_status(percent_battery_capacity)
 
-  html += "<tr><td>"
-  html += "    <span class=" + text_color_class + ">MAIN: " + percent_battery_capacity + "% (" + data.remaining + "/" + data.capacity + " mAh)</span>" 
-  html += "</td></tr>"
+  html += "<tr><td><span class=" + text_color_class + ">xFer: " + data.amps + "mA (" + data.remaining + "/" + data.capacity + " mAh)</span></td></tr>" 
 
   battery_activity = data.activity
 
-  text_color_class = "negligible"
-  if battery_activity == "Discharging"
-    text_color_class = "issue"
-  else if battery_activity == "Charging" 
-    text_color_class = "elevated"
+  text_color_class = get_text_color_class_for_status(percent_battery_capacity)
 
-  html += "<tr><td>"
-  html += "    <span class=" + text_color_class + ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Currently: " + battery_activity + ", " + data.amps +  " mA</span>" 
-  html += "</td></tr>"
-
-  battery_condition = data.condition
-
-  text_color_class = "nominal"
-
-  # Condition: https://support.apple.com/en-us/HT204054
-  # Cycles:https://support.apple.com/en-my/HT201585
-
-  if battery_condition == "Replace Soon"
-    text_color_class = "elevated"
-  else if battery_condition == "Replace Now"
-    text_color_class = "issue"
-  else if battery_condition == "Service Battery" 
-    text_color_class = "critical"
-
-  html += "<tr><td>"
-  html += "    <span class=" + text_color_class + ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Health: " + data.condition + ", " + data.cycles +  " cycles</span>" 
-  html += "</td></tr>"
-
+  $("#main-battery-bar").css('height', percent_battery_capacity + '%')
+  $("#main-battery-percent-display").html("<span class=" + text_color_class + ">" + percent_battery_capacity + "%</span>" )
+  $("#main-battery-bar").removeClass('battery-idle', 'battery-charging', 'battery-discharging');
+  $("#main-battery-bar").addClass('battery-' + battery_activity.toLowerCase());
 
   # If your keyboard doesn't report its battery status to OSX, delete everything until the 'end keyboard status' comment to remove it from your UI
   percent_keyboard_battery_capacity = data.keyboard_remaining_percent
@@ -65,12 +81,11 @@ update: (output, domEl) ->
     keyboard_status = percent_keyboard_battery_capacity + "%"
     text_color_class = get_text_color_class_for_status(percent_keyboard_battery_capacity)
   else
-    keyboard_status = "Disconnected"
+    keyboard_status = "OFFLINE"
     text_color_class = "negligible"
 
-  html += "<tr><td>"
-  html += "    <span class=" + text_color_class + ">AUX-K: " + keyboard_status + "</span>" 
-  html += "</td></tr>"
+  $("#keyboard-battery-bar").css('height', percent_keyboard_battery_capacity + '%')
+  $("#keyboard-battery-percent-display").html("<span class=" + text_color_class + ">" + keyboard_status + "</span>")
 
   # end keyboard status
 
@@ -82,19 +97,18 @@ update: (output, domEl) ->
     mouse_status = percent_mouse_battery_capacity + "%"
     text_color_class = get_text_color_class_for_status(percent_mouse_battery_capacity)
   else
-    mouse_status = "Disconnected"
+    mouse_status = "OFFLINE"
     text_color_class = "negligible"
 
-  html += "<tr><td>"
-  html += "    <span class=" + text_color_class + ">AUX-M: " + mouse_status + "</span>" 
-  html += "</td></tr>"
+  $("#mouse-battery-bar").css('height', percent_mouse_battery_capacity + '%')
+  $("#mouse-battery-percent-display").html("<span class=" + text_color_class + ">" + mouse_status + "</span>")
 
   # end mouse status
 
   $(batteryInfo).html(html)
 
 style: """
-  left: 895px
+  left: 890px
   top: 0px
-  width: 200px
+  width: 210px
 """
