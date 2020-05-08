@@ -11,9 +11,8 @@ render: -> """
 	<div class='metrics-titles-section bottom-spacer'>
 		<div class='system-status-title-filler title-row'></div>
 		<div id='resc-main' class='metric-title title-row'>RESC-MAIN</div>
-		<div id='comm-array' class='metric-title title-row'>COMMS ARRAY</div>
-		<div id='reactor' class='metric-title title-row'>REACTOR</div>
-		<div id='storage' class='metric-title title-row'>STORAGE</div>
+    <div id='reactor' class='metric-title title-row'>REACTOR</div>
+		<div id='comm-array' class='metric-title title-row'>DATA COMMS & STORAGE</div>
 		<div class='system-status-titles-end-filler title-row'></div>
  	</div>
   <div class='metrics-titles-section'>
@@ -103,10 +102,7 @@ style: """
   	width 200px
 
   #reactor
-  	width 200px
-
-  #storage
-  	width 200px
+  	width 210px
 
   .ops-metrics-title-filler
     width 178px

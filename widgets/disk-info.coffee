@@ -27,14 +27,14 @@ update: (output, domEl) ->
   html += "</td></tr>"
 
   html += "<tr><td>" 
-  html += "    <span class=" + text_color_class + ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + disk_used_percent + "% (" + data.disk_used + "/" + data.disk_size + ")</span>" 
+  html += "    <span class=" + text_color_class + ">&nbsp;&nbsp;&nbsp;&nbsp;" + disk_used_percent + "% (" + data.disk_used + "/" + data.disk_size + ")</span>" 
   html += "</td></tr>"
 
 
   $(diskInfo).html(html)
 
 style: """
-  left: 1110px
-  top: 0px
+  left: 900px
+  top: 60px
   width: 200px
 """
