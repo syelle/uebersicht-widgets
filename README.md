@@ -25,6 +25,9 @@ My personal library of [Übersicht](http://tracesof.net/uebersicht/) widgets, wh
 ## Dependencies
 - [Übersicht](http://tracesof.net/uebersicht/), which renders the UI and continuously runs scripts to fetch updates
 - [Okuda](http://www.pixelsagas.com/?download=okuda), a free-for-personal-use font similar to the font used in the LCARS Interface in Star Trek.
+- 2 Perl modules: _common::sense_ and _Types::Serialiser_
+  - `sudo cpan install common::sense`
+  - `sudo cpan install Types::Serialiser`
 
 ## Dev Setup
 - Install [Übersicht](http://tracesof.net/uebersicht/).
