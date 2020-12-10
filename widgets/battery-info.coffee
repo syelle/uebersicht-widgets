@@ -27,6 +27,27 @@ render: -> """
       </div>
       <div id='mouse-battery-percent-display' class='battery-percent-display'></div>
     </div>
+    <div class='battery-gauge'>
+      <div class='battery-title'>AUX-C</div>
+      <div class='battery-bar-container'>
+        <div id='airpod-case-battery-bar' class='battery-progress-bar'></div>
+      </div>
+      <div id='airpod-case-battery-percent-display' class='battery-percent-display'></div>
+    </div>
+    <div class='battery-gauge'>
+      <div class='battery-title'>AUX-L</div>
+      <div class='battery-bar-container'>
+        <div id='airpod-left-battery-bar' class='battery-progress-bar'></div>
+      </div>
+      <div id='airpod-left-battery-percent-display' class='battery-percent-display'></div>
+    </div>
+    <div class='battery-gauge'>
+      <div class='battery-title'>AUX-R</div>
+      <div class='battery-bar-container'>
+        <div id='airpod-right-battery-bar' class='battery-progress-bar'></div>
+      </div>
+      <div id='airpod-right-battery-percent-display' class='battery-percent-display'></div>
+    </div>
   <div>
 """
 
@@ -105,10 +126,59 @@ update: (output, domEl) ->
 
   # end mouse status
 
+  # If you don't have airpods connected to your system, delete everything until the 'end airpod status' comment to remove it from your UI
+
+  percent_airpod_left_battery_capacity = data.airpod_left_remaining_percent
+  airpods_connected = data.airpods_connected
+  $("#airpod-left-battery-bar").removeClass('battery-idle', 'battery-charging', 'battery-discharging');
+
+  if airpods_connected == 'Yes'
+    airpod_left_status = percent_airpod_left_battery_capacity + "%"
+    text_color_class = get_text_color_class_for_status(percent_airpod_left_battery_capacity)
+    $("#airpod-left-battery-bar").addClass('battery-discharging');
+  else
+    airpod_left_status = "OFFLINE"
+    text_color_class = "negligible"
+    percent_airpod_left_battery_capacity = 0;
+
+  $("#airpod-left-battery-bar").css('height', percent_airpod_left_battery_capacity + '%')
+  $("#airpod-left-battery-percent-display").html("<span class=" + text_color_class + ">" + airpod_left_status + "</span>")
+
+  percent_airpod_right_battery_capacity = data.airpod_right_remaining_percent
+  $("#airpod-right-battery-bar").removeClass('battery-idle', 'battery-charging', 'battery-discharging');
+
+  if airpods_connected == 'Yes'
+    airpod_right_status = percent_airpod_right_battery_capacity + "%"
+    text_color_class = get_text_color_class_for_status(percent_airpod_right_battery_capacity)
+    $("#airpod-right-battery-bar").addClass('battery-discharging');
+  else
+    airpod_right_status = "OFFLINE"
+    text_color_class = "negligible"
+    percent_airpod_right_battery_capacity = 0
+
+  $("#airpod-right-battery-bar").css('height', percent_airpod_right_battery_capacity + '%')
+  $("#airpod-right-battery-percent-display").html("<span class=" + text_color_class + ">" + airpod_right_status + "</span>")
+
+  percent_airpod_case_battery_capacity = data.airpod_case_remaining_percent
+  $("#airpod-case-battery-bar").removeClass('battery-idle', 'battery-charging', 'battery-discharging');
+
+  if percent_airpod_case_battery_capacity > 0
+    airpod_case_status = percent_airpod_case_battery_capacity + "%"
+    text_color_class = get_text_color_class_for_status(percent_airpod_case_battery_capacity)
+    $("#airpod-case-battery-bar").addClass('battery-idle');
+  else
+    airpod_case_status = "OFFLINE"
+    text_color_class = "negligible"
+
+  $("#airpod-case-battery-bar").css('height', percent_airpod_case_battery_capacity + '%')
+  $("#airpod-case-battery-percent-display").html("<span class=" + text_color_class + ">" + airpod_case_status + "</span>")
+
+  # end airpod status
+
   $(batteryInfo).html(html)
 
 style: """
   left: 675px
   top: 0px
-  width: 210px
+  width: 420px
 """

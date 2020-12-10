@@ -9,6 +9,7 @@ use JSON::XS;
 # Note: Only certain bluetooth devices report their battery status to OSX. This script has only been tested with Apple's Magic Keyboard and Magic Mouse
 my $keyboard_name = "Shaun Yelle’s Keyboard";
 my $mouse_name = "Shaun Yelle’s Mouse";
+my $airpods_name = "Shaun Yelle's AirPods Pro";
 
 $_ = `system_profiler SPPowerDataType 2>&1`;
 
@@ -60,6 +61,8 @@ if($connected eq 'Yes') {
 $_ = `system_profiler SPBluetoothDataType 2>&1`;
 
 my ($keyboard_connected, $keyboard_remaining_percent, $mouse_connected, $mouse_remaining_percent) = ('No', 0, 'No', 0);
+my ($airpod_left_remaining_percent, $airpod_right_remaining_percent, $airpod_case_remaining_percent, $airpods_connected) = (0, 0, 0, 'No');
+
 
 my $device_name_regex = '(?:' . $keyboard_name . ':).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)';
 
@@ -75,6 +78,32 @@ if(/$device_name_regex/) {
   $mouse_connected = 'Yes';  
 }
 
+$device_name_regex = '(?:' . $airpods_name . ':).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Connected: )(\w+)';
+
+if(/$device_name_regex/) {
+  $airpods_connected = $1;  
+}
+
+$_ = `defaults read /Library/Preferences/com.apple.Bluetooth | grep BatteryPercent`;
+
+$device_name_regex = 'BatteryPercentLeft = (\d+);';
+
+if(/$device_name_regex/) {
+  $airpod_left_remaining_percent = $1;
+}
+
+$device_name_regex = 'BatteryPercentRight = (\d+);';
+
+if(/$device_name_regex/) {
+  $airpod_right_remaining_percent = $1;
+}
+
+$device_name_regex = 'BatteryPercentCase = (\d+);';
+
+if(/$device_name_regex/) {
+  $airpod_case_remaining_percent = $1;
+}
+
 my $batteryInfo = {
   activity => $activity,
   amps => $amps,
@@ -88,6 +117,10 @@ my $batteryInfo = {
   keyboard_connected => $keyboard_connected,
   mouse_remaining_percent => $mouse_remaining_percent,
   mouse_connected => $mouse_connected,
+  airpods_connected => $airpods_connected,
+  airpod_left_remaining_percent => $airpod_left_remaining_percent,
+  airpod_right_remaining_percent => $airpod_right_remaining_percent,
+  airpod_case_remaining_percent => $airpod_case_remaining_percent,
 };
 
 my $json = JSON::XS->new->ascii->pretty->allow_nonref;
