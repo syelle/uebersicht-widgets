@@ -86,7 +86,7 @@ style: """
   .system-status-titles-end-filler
     background-color #666666
     height 38px
-    width 675px
+    width 475px
     border-bottom-right-radius 35px
     border-top-right-radius 35px
 
@@ -102,7 +102,7 @@ style: """
   	width 200px
 
   #reactor
-  	width 210px
+  	width 420px
 
   .ops-metrics-title-filler
     width 178px

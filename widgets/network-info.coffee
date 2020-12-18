@@ -41,6 +41,6 @@ update: (output, domEl) ->
 
 # CSS Style
 style: """
-  left: 900px
+  left: 1110px
   top: 0px
 """
