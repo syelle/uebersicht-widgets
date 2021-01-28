@@ -87,8 +87,6 @@ style: """
     background-color #666666
     height 38px
     width 475px
-    border-bottom-right-radius 35px
-    border-top-right-radius 35px
 
   .metric-title
     padding 5px 8px
@@ -127,8 +125,6 @@ style: """
     background-color #666666
     height 38px
     width 1208px
-    border-bottom-right-radius 35px
-    border-top-right-radius 35px
 
   #ops-status-section
     height 300px
