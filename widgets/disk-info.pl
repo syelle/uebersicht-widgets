@@ -6,7 +6,7 @@ use warnings;
 use JSON::XS;
 
 # config: Edit `$disk_name` with the name of your preferred disk as it appears in the output of `df -l`
-my $disk_name = '/dev/disk1s1';
+my $disk_name = '/dev/disk1s1s1';
 
 my ($disk_size, $disk_available, $disk_used, $disk_used_percent) = (0, 0, 0, 0);
 

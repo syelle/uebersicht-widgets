@@ -15,7 +15,7 @@ $_ = `system_profiler SPPowerDataType 2>&1`;
 
 my ($remaining, $capacity, $charging, $cycles, $condition, $amps, $volts, $connected) = (0, 0, 'No', 0, 'Unknown', 0, 0, 'No');
 
-if(/\bCharge\s+Remaining\s+\(mAh\):\s+(\w+)/) {
+if(/\bState\s+of\s+Charge\s+\(%\):\s+(\w+)/) {
   $remaining = $1;	
 }
 
@@ -110,8 +110,8 @@ my $batteryInfo = {
   capacity => $capacity,
   condition => $condition,
   cycles => $cycles,
-  remaining => $remaining,
-  remainingPercent => sprintf("%.2f", $remaining/$capacity * 100),
+  remaining => sprintf("%.2f", $capacity * ($remaining / 100)),
+  remainingPercent => $remaining,
   volts => $volts,
   keyboard_remaining_percent => $keyboard_remaining_percent,
   keyboard_connected => $keyboard_connected,
