@@ -64,14 +64,14 @@ my ($keyboard_connected, $keyboard_remaining_percent, $mouse_connected, $mouse_r
 my ($airpod_left_remaining_percent, $airpod_right_remaining_percent, $airpod_case_remaining_percent, $airpods_connected) = (0, 0, 0, 'No');
 
 
-my $device_name_regex = '(?:' . $keyboard_name . ':).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)';
+my $device_name_regex = '(?:' . $keyboard_name . ':).*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)';
 
 if(/$device_name_regex/) {
   $keyboard_remaining_percent = $1;
   $keyboard_connected = 'Yes';
 }
 
-$device_name_regex = '(?:' . $mouse_name . ':).*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)';
+$device_name_regex = '(?:' . $mouse_name . ':).*\n.*\n.*\n.*\n.*\n.*(?:Battery Level: )(\d+)';
 
 if(/$device_name_regex/) {
   $mouse_remaining_percent = $1;
